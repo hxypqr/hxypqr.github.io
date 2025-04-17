@@ -1,16 +1,15 @@
 ---
 layout: post
-title: "带图示的数学例子"
-date: 2025-04-18
+title: "First Thoughts"
+date: 2025-04-17
 categories: blog
 ---
 
-这是一个演示如何在 Jekyll 博客中插入图片的例子。
+This is my first blog post!
 
-我们来展示一个图像（假设它解释了某个函数行为）：
+Here is Euler's identity:
 
-<p align="center">
-  <img src="/assets/img/blog/example-image.png" width="500">
-</p>
+$$
+e^{\pi i} + 1 = 0
+$$
 
-图片上是一个简化示意图，说明了图像插入的方式。
