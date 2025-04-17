@@ -5,11 +5,7 @@ date: 2025-04-17
 categories: blog
 ---
 
-This is my first blog post!
-
-Here is Euler's identity:
-
-$$
-e^{\pi i} + 1 = 0
-$$
+<p align="center">
+  <img src="/assets/img/blog/example-image.png" width="500">
+</p>
 
