@@ -1,7 +1,7 @@
 title: Homepage
 description: realationship of relationship
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://yourusername.github.io" # the base hostname & protocol for your site
+url: "https://hxypqr.github.io"
+baseurl: ""
 
 theme: minima
 
@@ -13,3 +13,8 @@ markdown: kramdown
 kramdown:
   math_engine: katex
   input: GFM
+
+collections:
+  research:
+    output: true
+    permalink: /research/:name
