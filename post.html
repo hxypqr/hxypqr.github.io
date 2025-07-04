@@ -34,7 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Re-render KaTeX formulas
                 if (window.renderMathInElement) {
-                    renderMathInElement(postBody);
+                    renderMathInElement(postBody, {
+                      delimiters: [
+                        {left: "$$", right: "$$", display: true},
+                        {left: "$", right: "$", display: false}
+                      ]
+                    });
                 }
             })
             .catch(error => {
