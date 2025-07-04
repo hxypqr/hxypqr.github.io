@@ -26,7 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 postDate.textContent = new Date(post.date).toLocaleDateString();
 
                 const postBody = document.createElement('div');
-                postBody.innerHTML = post.content.rendered;
+                const decodedContent = (function() {
+                    var txt = document.createElement("textarea");
+                    txt.innerHTML = post.content.rendered;
+                    return txt.value;
+                })();
+                postBody.innerHTML = decodedContent;
 
                 postContent.appendChild(postTitle);
                 postContent.appendChild(postDate);
