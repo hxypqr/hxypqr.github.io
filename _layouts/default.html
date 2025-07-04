@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include head-custom.html %}
+    <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2s0ADtJda1gnfKnDRASqSuYdG6USLgimMO21C2E" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41YSyJxusGZEeD5vGkjAVWPEbucUuP5VGT/R1gs4hTFabMVeT3hCsjLqD" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7eE6JAOhjVRqYSDbeL8xA9+J" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrapper">
+        <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title }}</a>
+        <nav class="site-nav">
+          <a class="page-link" href="{{ "/blog/" | relative_url }}">Blog</a>
+          <a class="page-link" href="{{ "/research/" | relative_url }}">Research</a>
+          <a class="page-link" href="{{ "/" | relative_url }}">Homepage</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrapper">
+        <p>&copy; {{ site.title }}.</p>
+      </div>
+    </footer>
+    <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
+  </body>
+</html>
