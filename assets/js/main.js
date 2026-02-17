@@ -2,8 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const postsContainer = document.getElementById('posts-container');
 
     if (postsContainer) {
-        fetch('https://api.hxypqr.com/wp-json/wp/v2/posts
-')
+        fetch('https://api.hxypqr.com/wp-json/wp/v2/posts')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -50,4 +49,5 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 });
+
 
