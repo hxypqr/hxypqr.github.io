@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const postId = new URLSearchParams(window.location.search).get('id');
 
     if (postContent && postId) {
-        fetch(`https://66.42.109.149/wp-json/wp/v2/posts/${postId}`)
+        fetch(`https://api.hxypqr.com/wp-json/wp/v2/posts/${postId}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -68,3 +68,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+
