@@ -1,9 +1,11 @@
 ---
-layout: home
+layout: default
 title: "Homepage"
 description: "realationship of relationship"
 author_profile: true
 ---
+
+# Homepage
 
 Welcome to my homepage.
 

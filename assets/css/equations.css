@@ -8,3 +8,147 @@
   display: block;
   text-align: right;
 }
+
+.katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.15rem;
+}
+
+.post {
+  margin-bottom: 2.25rem;
+}
+
+.post-date,
+.posts-status {
+  color: #666;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.post-excerpt > :last-child {
+  margin-bottom: 0;
+}
+
+.post-body {
+  margin-top: 1.5rem;
+  overflow-wrap: anywhere;
+}
+
+.post-body img,
+.post-body video {
+  height: auto;
+  max-width: 100%;
+}
+
+.post-body iframe {
+  max-width: 100%;
+}
+
+.post-body table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.post-body pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.legacy-latex-section,
+.legacy-latex-subsection,
+.legacy-latex-paragraph {
+  display: block;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 1.75rem 0 0.8rem;
+}
+
+.legacy-latex-section {
+  font-size: 1.5rem;
+}
+
+.legacy-latex-subsection {
+  font-size: 1.25rem;
+}
+
+.legacy-latex-paragraph {
+  font-size: 1.05rem;
+}
+
+.legacy-latex-environment-label {
+  font-weight: 700;
+}
+
+.legacy-latex-page-break {
+  border-top: 1px solid #e5e5e5;
+  display: block;
+  margin: 2rem 0;
+}
+
+.legacy-markdown-heading {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 1.75rem 0 0.8rem;
+}
+
+.blog-error {
+  color: #a40000;
+}
+
+.site-header .wrapper {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.site-nav {
+  background: transparent;
+  border: 0;
+  float: none;
+  line-height: inherit;
+  position: static;
+}
+
+.site-nav .page-link {
+  display: inline-block;
+  margin-left: 0;
+}
+
+.site-nav .page-link:not(:last-child) {
+  margin-right: 1.25rem;
+}
+
+@media screen and (max-width: 600px) {
+  .site-header .wrapper {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-bottom: 0.75rem;
+    padding-top: 0.75rem;
+  }
+
+  .site-title {
+    float: none;
+    line-height: 1.4;
+  }
+
+  .site-nav {
+    text-align: left;
+    width: 100%;
+  }
+
+  .site-nav .page-link {
+    margin: 0;
+    padding: 0.25rem 0;
+  }
+
+  .site-nav .page-link:not(:last-child) {
+    margin-right: 1rem;
+  }
+}

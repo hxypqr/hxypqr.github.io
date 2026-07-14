@@ -1,70 +1,73 @@
 ---
 layout: default
+title: Blog Post
 ---
 
-<div id="post-content"></div>
+<div id="post-content">
+  <p id="post-status" role="status">正在加载文章…</p>
+</div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     const postContent = document.getElementById('post-content');
     const postId = new URLSearchParams(window.location.search).get('id');
 
-    if (postContent && postId) {
-        fetch(`https://api.hxypqr.com/wp-json/wp/v2/posts/${postId}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(post => {
-                document.title = post.title.rendered;
-                const postTitle = document.createElement('h1');
-                postTitle.textContent = post.title.rendered;
+    function showError(message) {
+        postContent.replaceChildren();
+        const error = document.createElement('p');
+        error.className = 'blog-error';
+        error.textContent = message;
+        const backLink = document.createElement('a');
+        backLink.href = '/blog/';
+        backLink.textContent = '返回文章列表';
+        postContent.append(error, backLink);
+    }
 
-                const postDate = document.createElement('p');
-                postDate.textContent = new Date(post.date).toLocaleDateString();
+    if (!postContent) {
+        return;
+    }
 
-                const postBody = document.createElement('div');
-                const decodedContent = (function() {
-                    var txt = document.createElement("textarea");
-                    txt.innerHTML = post.content.rendered;
-                    return txt.value;
-                })();
-                postBody.innerHTML = decodedContent;
+    if (!postId || !/^\d+$/.test(postId)) {
+        showError('文章链接无效。');
+        return;
+    }
 
-                // Clean and unwrap display math
-                postBody.querySelectorAll('p').forEach(p => {
-                    let html = p.innerHTML.trim();
-                    // Check if it's a display math block
-                    if (html.startsWith('$$') && html.endsWith('$$')) {
-                        // Remove <br> tags from within the math block
-                        html = html.replace(/<br\s*\/?>/gi, '');
-                        const div = document.createElement('div');
-                        div.innerHTML = html;
-                        // Replace the <p> tag with the cleaned math block
-                        p.parentNode.replaceChild(div, p);
-                    }
-                });
+    try {
+        const parameters = new URLSearchParams({ _fields: 'id,date,title,content' });
+        const response = await fetch(
+            `${window.BlogApp.apiBase}/${encodeURIComponent(postId)}?${parameters.toString()}`,
+            { headers: { Accept: 'application/json' } }
+        );
 
-                postContent.appendChild(postTitle);
-                postContent.appendChild(postDate);
-                postContent.appendChild(postBody);
+        if (!response.ok) {
+            throw new Error(`WordPress API returned ${response.status}`);
+        }
 
-                // Re-render KaTeX formulas
-                if (window.renderMathInElement) {
-                    renderMathInElement(postBody, {
-                      delimiters: [
-                        {left: "$$", right: "$$", display: true},
-                        {left: "$", right: "$", display: false}
-                      ]
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-                postContent.innerHTML = '<p>Error loading post. Please try again later.</p>';
-            });
+        const post = await response.json();
+        const title = window.BlogApp.decodeRenderedText(post.title && post.title.rendered);
+        document.title = title || 'Blog Post';
+
+        const postTitle = document.createElement('h1');
+        postTitle.textContent = title;
+
+        const postDate = document.createElement('time');
+        postDate.className = 'post-date';
+        postDate.dateTime = post.date;
+        postDate.textContent = window.BlogApp.formatDate(post.date);
+
+        const postBody = document.createElement('div');
+        postBody.className = 'post-body';
+        const renderedContent = post.content && post.content.rendered
+            ? post.content.rendered
+            : '';
+        postBody.innerHTML = window.BlogApp.prepareRenderedHtml(renderedContent, post.id);
+
+        window.BlogApp.enhanceLegacyLatex(postBody, post.id);
+        postContent.replaceChildren(postTitle, postDate, postBody);
+        window.BlogApp.renderMath(postContent);
+    } catch (error) {
+        console.error('Unable to load blog post:', error);
+        showError('文章加载失败，文章可能不存在，或服务器暂时无法访问。');
     }
 });
 </script>
