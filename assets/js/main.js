@@ -2,6 +2,7 @@
   'use strict';
 
   const API_BASE = 'https://api.hxypqr.com/wp-json/wp/v2/posts';
+  const TRUSTED_INTERACTIVE_POST_IDS = new Set(['113']);
   const MATH_OPTIONS = {
     delimiters: [
       { left: '$$', right: '$$', display: true },
@@ -64,6 +65,10 @@
     'align', 'alt', 'aria-describedby', 'class', 'colspan', 'decoding',
     'height', 'href', 'id', 'loading', 'name', 'rel', 'rowspan', 'sizes',
     'src', 'srcset', 'style', 'title', 'width'
+  ];
+  const INTERACTIVE_CONTENT_ATTRIBUTES = [
+    'aria-label', 'data-kh-copy', 'data-kh-frame-index', 'data-kh-label-en',
+    'data-kh-label-zh', 'data-language', 'hidden', 'lang'
   ];
   const GLOBAL_CONTENT_ATTRIBUTES = new Set([
     'aria-describedby', 'class', 'id', 'style', 'title'
@@ -241,11 +246,58 @@
       return '<p class="blog-error">文章内容暂时无法安全显示。</p>';
     }
 
-    const purifiedHtml = window.DOMPurify.sanitize(String(value || ''), {
-      ALLOWED_ATTR: ALLOWED_CONTENT_ATTRIBUTES,
+    const isTrustedInteractivePost = TRUSTED_INTERACTIVE_POST_IDS.has(String(postId || ''));
+    const allowedAttributes = isTrustedInteractivePost
+      ? ALLOWED_CONTENT_ATTRIBUTES.concat(INTERACTIVE_CONTENT_ATTRIBUTES)
+      : ALLOWED_CONTENT_ATTRIBUTES;
+    const interactiveAttributes = isTrustedInteractivePost
+      ? new Set(INTERACTIVE_CONTENT_ATTRIBUTES)
+      : new Set();
+    const trustedFrames = [];
+    let sourceHtml = String(value || '');
+
+    if (isTrustedInteractivePost) {
+      const sourceTemplate = document.createElement('template');
+      sourceTemplate.innerHTML = sourceHtml;
+      sourceTemplate.content.querySelectorAll('iframe').forEach(function (frame) {
+        const sandboxValue = (frame.getAttribute('sandbox') || '').trim();
+        const srcdocValue = frame.getAttribute('srcdoc') || '';
+        const titleValue = (frame.getAttribute('title') || '').slice(0, 300);
+        const styleValue = frame.getAttribute('style') || '';
+        const heightMatch = styleValue.match(/(?:^|;)\s*height\s*:\s*(\d{3,4})px(?:;|$)/i);
+        const heightValue = heightMatch ? Number(heightMatch[1]) : 700;
+        const isTrustedFrame =
+          frame.classList.contains('kh-figure-frame') &&
+          sandboxValue === 'allow-scripts' &&
+          srcdocValue.length > 0 &&
+          srcdocValue.length <= 750000 &&
+          /^\s*<!doctype html>/i.test(srcdocValue) &&
+          heightValue >= 300 &&
+          heightValue <= 1200;
+
+        if (!isTrustedFrame || trustedFrames.length >= 3) {
+          frame.remove();
+          return;
+        }
+
+        const frameIndex = trustedFrames.push({
+          height: heightValue,
+          srcdoc: srcdocValue,
+          title: titleValue
+        }) - 1;
+        const placeholder = document.createElement('div');
+        placeholder.className = 'kh-iframe-placeholder';
+        placeholder.setAttribute('data-kh-frame-index', String(frameIndex));
+        frame.replaceWith(placeholder);
+      });
+      sourceHtml = sourceTemplate.innerHTML;
+    }
+
+    const purifiedHtml = window.DOMPurify.sanitize(sourceHtml, {
+      ALLOWED_ATTR: allowedAttributes,
       ALLOWED_TAGS: ALLOWED_CONTENT_TAGS,
-      ALLOW_ARIA_ATTR: false,
-      ALLOW_DATA_ATTR: false,
+      ALLOW_ARIA_ATTR: isTrustedInteractivePost,
+      ALLOW_DATA_ATTR: isTrustedInteractivePost,
       KEEP_CONTENT: true
     });
     const template = document.createElement('template');
@@ -257,7 +309,11 @@
       Array.from(element.attributes).forEach(function (attribute) {
         const name = attribute.name.toLowerCase();
         const attributeValue = attribute.value;
-        if (!GLOBAL_CONTENT_ATTRIBUTES.has(name) && !tagAttributes.has(name)) {
+        if (
+          !GLOBAL_CONTENT_ATTRIBUTES.has(name) &&
+          !tagAttributes.has(name) &&
+          !interactiveAttributes.has(name)
+        ) {
           element.removeAttribute(attribute.name);
         } else if ((name === 'href' || name === 'src') && !isSafeUrl(attributeValue, name)) {
           element.removeAttribute(attribute.name);
@@ -298,6 +354,16 @@
           element.removeAttribute('loading');
         } else if (name === 'decoding' && !/^(?:async|auto|sync)$/i.test(attributeValue)) {
           element.removeAttribute('decoding');
+        } else if (name === 'lang' && !/^(?:zh-CN|en)$/i.test(attributeValue)) {
+          element.removeAttribute('lang');
+        } else if (name === 'aria-label' && attributeValue.length > 300) {
+          element.removeAttribute('aria-label');
+        } else if (name.startsWith('data-kh-') && attributeValue.length > 500) {
+          element.removeAttribute(attribute.name);
+        } else if (name === 'data-language' && !/^(?:zh|en)$/.test(attributeValue)) {
+          element.removeAttribute('data-language');
+        } else if (name === 'data-kh-frame-index' && !/^\d$/.test(attributeValue)) {
+          element.removeAttribute('data-kh-frame-index');
         } else if ((name === 'width' || name === 'height') && !/^[1-9]\d{0,4}$/.test(attributeValue)) {
           element.removeAttribute(attribute.name);
         } else if ((name === 'colspan' || name === 'rowspan') && !/^[1-9]\d{0,2}$/.test(attributeValue)) {
@@ -314,6 +380,24 @@
     });
 
     prefixLegacyTargets(template.content, postId);
+    template.content.querySelectorAll('[data-kh-frame-index]').forEach(function (placeholder) {
+      const frameIndex = Number(placeholder.getAttribute('data-kh-frame-index'));
+      const trustedFrame = trustedFrames[frameIndex];
+      if (!trustedFrame) {
+        placeholder.remove();
+        return;
+      }
+
+      const frame = document.createElement('iframe');
+      frame.className = 'kh-figure-frame';
+      frame.loading = 'lazy';
+      frame.referrerPolicy = 'no-referrer';
+      frame.sandbox.add('allow-scripts');
+      frame.srcdoc = trustedFrame.srcdoc;
+      frame.title = trustedFrame.title;
+      frame.style.height = `${trustedFrame.height}px`;
+      placeholder.replaceWith(frame);
+    });
     return template.innerHTML;
   }
 
@@ -828,6 +912,88 @@
     });
   }
 
+  function enhanceInteractivePost(root, postId, postTitle) {
+    if (!root || !TRUSTED_INTERACTIVE_POST_IDS.has(String(postId || ''))) {
+      return;
+    }
+
+    const titles = {
+      zh: '从支撑接触到 Hausdorff 分层：凸 k-Hessian 解的四步证明机制',
+      en: 'From Supporting Contacts to Hausdorff Stratification: A Four-Step Proof for Convex k-Hessian Solutions'
+    };
+    const navigation = document.querySelector('.site-nav');
+    let button = document.getElementById('kh-language-toggle');
+
+    if (!button) {
+      button = document.createElement('button');
+      button.id = 'kh-language-toggle';
+      button.type = 'button';
+      button.className = 'page-link kh-language-toggle';
+      if (navigation) {
+        navigation.appendChild(button);
+      } else {
+        root.insertAdjacentElement('beforebegin', button);
+      }
+    }
+
+    let language = 'zh';
+    try {
+      language = localStorage.getItem('khessian-blog-language') === 'en' ? 'en' : 'zh';
+    } catch (error) {
+      language = 'zh';
+    }
+
+    function notifyFigures() {
+      root.querySelectorAll('.kh-figure-frame').forEach(function (frame) {
+        if (frame.contentWindow) {
+          frame.contentWindow.postMessage({
+            type: 'khessian:set-language',
+            lang: language
+          }, '*');
+        }
+      });
+    }
+
+    function setLanguage(nextLanguage) {
+      language = nextLanguage === 'en' ? 'en' : 'zh';
+      document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
+      root.querySelectorAll('[data-kh-copy]').forEach(function (node) {
+        node.hidden = node.getAttribute('data-kh-copy') !== language;
+      });
+      const article = root.querySelector('article[data-language]');
+      if (article) {
+        article.dataset.language = language;
+      }
+      root.querySelectorAll('[data-kh-label-zh]').forEach(function (node) {
+        node.setAttribute(
+          'aria-label',
+          node.getAttribute(language === 'zh' ? 'data-kh-label-zh' : 'data-kh-label-en') || ''
+        );
+      });
+      button.textContent = language === 'zh' ? 'English' : '中文';
+      button.setAttribute('aria-label', language === 'zh' ? 'Switch to English' : '切换到中文');
+      button.setAttribute('aria-pressed', language === 'en' ? 'true' : 'false');
+      if (postTitle) {
+        postTitle.textContent = titles[language];
+      }
+      document.title = titles[language];
+      notifyFigures();
+      try {
+        localStorage.setItem('khessian-blog-language', language);
+      } catch (error) {
+        // The page remains usable when storage is unavailable.
+      }
+    }
+
+    button.addEventListener('click', function () {
+      setLanguage(language === 'zh' ? 'en' : 'zh');
+    });
+    root.querySelectorAll('.kh-figure-frame').forEach(function (frame) {
+      frame.addEventListener('load', notifyFigures);
+    });
+    setLanguage(language);
+  }
+
   async function fetchPostsPage(page) {
     const parameters = new URLSearchParams({
       page: String(page),
@@ -875,6 +1041,7 @@
   window.BlogApp = Object.freeze({
     apiBase: API_BASE,
     decodeRenderedText: decodeRenderedText,
+    enhanceInteractivePost: enhanceInteractivePost,
     enhanceLegacyLatex: enhanceLegacyLatex,
     formatDate: formatDate,
     prepareRenderedHtml: prepareRenderedHtml,

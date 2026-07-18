@@ -43,7 +43,20 @@
 }
 
 .post-body iframe {
+  background: #f3ead3;
+  border: 0;
+  display: block;
   max-width: 100%;
+  width: 100%;
+}
+
+.site-nav .kh-language-toggle {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
 }
 
 .post-body table {

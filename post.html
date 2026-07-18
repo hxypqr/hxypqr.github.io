@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         window.BlogApp.enhanceLegacyLatex(postBody, post.id);
         postContent.replaceChildren(postTitle, postDate, postBody);
+        window.BlogApp.enhanceInteractivePost(postBody, post.id, postTitle);
         window.BlogApp.renderMath(postContent);
     } catch (error) {
         console.error('Unable to load blog post:', error);
