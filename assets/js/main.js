@@ -275,7 +275,7 @@
           heightValue >= 300 &&
           heightValue <= 1200;
 
-        if (!isTrustedFrame || trustedFrames.length >= 3) {
+        if (!isTrustedFrame || trustedFrames.length >= 5) {
           frame.remove();
           return;
         }
