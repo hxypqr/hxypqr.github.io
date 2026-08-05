@@ -29,6 +29,14 @@ title: Research
 </p>
 
 <p>
+  <a href="{{ '/files/expository/Separating_Prime_Blocks_and_Phase-Resolved_Asymptotics_for_Harmonic_Subset_Sums.pdf' | relative_url }}">Separating Prime Blocks and Phase-Resolved Asymptotics for Harmonic Subset Sums</a>.
+</p>
+
+<p>
+  <a href="{{ '/files/expository/Reflection_Completions_and_Weighted_Stability_for_Strongly_2-Primitive_Sets.pdf' | relative_url }}">Reflection Completions and Weighted Stability for Strongly 2-Primitive Sets</a>.
+</p>
+
+<p>
   <a href="{{ '/files/expository/A_Gibbs-Greedy_N2-3_Construction_for_Sine_Sums_and_Riesz-Product_Consequences_of_Two-Dissociation.pdf' | relative_url }}">A Gibbs-Greedy N<sup>2/3</sup> Construction for Sine Sums and Riesz-Product Consequences of Two-Dissociation</a>.
 </p>
 
