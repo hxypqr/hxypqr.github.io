@@ -18,7 +18,7 @@ title: Research
 </p>
 
 <p>
-  Phase-randomised Riesz products and a further improvement towards the lonely runner conjecture (with Benjamin Bedert, 2026).
+  Phase-randomised Riesz products and a further improvement towards the lonely runner conjecture (joint note with Benjamin Bedert, 2026; both authors independently obtained the exponent 13/8 before deciding to publish together).
   <a href="https://github.com/hxypqr/phase_riesz_products_lonely_runner/blob/main/phase_riesz_products_lonely_runner.pdf">PDF</a>.
 </p>
 
