@@ -25,10 +25,6 @@ title: Research
 <h2>Expository</h2>
 
 <p>
-  <a href="{{ '/post.html?id=113' | relative_url }}">From Supporting Contacts to Hausdorff Stratification: A Four-Step Proof for Convex <em>k</em>-Hessian Solutions</a>.
-</p>
-
-<p>
   <a href="{{ '/files/expository/Separating_Prime_Blocks_and_Phase-Resolved_Asymptotics_for_Harmonic_Subset_Sums.pdf' | relative_url }}">Separating Prime Blocks and Phase-Resolved Asymptotics for Harmonic Subset Sums</a>.
 </p>
 
