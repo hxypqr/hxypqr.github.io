@@ -17,6 +17,11 @@ title: Research
   <a href="https://arxiv.org/abs/2608.01781">arXiv:2608.01781</a>.
 </p>
 
+<p>
+  Phase-randomised Riesz products and a further improvement towards the lonely runner conjecture (with Benjamin Bedert, 2026).
+  <a href="https://github.com/hxypqr/phase_riesz_products_lonely_runner/blob/main/phase_riesz_products_lonely_runner.pdf">PDF</a>.
+</p>
+
 <h2>Expository</h2>
 
 <p>
@@ -25,10 +30,6 @@ title: Research
 
 <p>
   <a href="{{ '/files/expository/A_Gibbs-Greedy_N2-3_Construction_for_Sine_Sums_and_Riesz-Product_Consequences_of_Two-Dissociation.pdf' | relative_url }}">A Gibbs-Greedy N<sup>2/3</sup> Construction for Sine Sums and Riesz-Product Consequences of Two-Dissociation</a>.
-</p>
-
-<p>
-  <a href="{{ '/files/expository/A_Phase-Riesz_Refinement_of_the_Large-Dimension_Argument_for_the_Lonely_Runner_Problem.pdf' | relative_url }}">A Phase-Riesz Refinement of the Large-Dimension Argument for the Lonely Runner Problem</a>.
 </p>
 
 <p>
