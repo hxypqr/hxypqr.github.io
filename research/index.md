@@ -22,3 +22,27 @@ title: Research
 <p>
   <a href="{{ '/post.html?id=113' | relative_url }}">From Supporting Contacts to Hausdorff Stratification: A Four-Step Proof for Convex <em>k</em>-Hessian Solutions</a>.
 </p>
+
+<p>
+  <a href="{{ '/files/expository/A_Gibbs-Greedy_N2-3_Construction_for_Sine_Sums_and_Riesz-Product_Consequences_of_Two-Dissociation.pdf' | relative_url }}">A Gibbs-Greedy N<sup>2/3</sup> Construction for Sine Sums and Riesz-Product Consequences of Two-Dissociation</a>.
+</p>
+
+<p>
+  <a href="{{ '/files/expository/A_Phase-Riesz_Refinement_of_the_Large-Dimension_Argument_for_the_Lonely_Runner_Problem.pdf' | relative_url }}">A Phase-Riesz Refinement of the Large-Dimension Argument for the Lonely Runner Problem</a>.
+</p>
+
+<p>
+  <a href="{{ '/files/expository/A_logarithmic-square_construction_for_squarefree_pairwise_sums.pdf' | relative_url }}">A logarithmic-square construction for squarefree pairwise sums</a>.
+</p>
+
+<p>
+  <a href="{{ '/files/expository/From_Isospectrality_to_Geometry.pdf' | relative_url }}">From Isospectrality to Geometry</a>.
+</p>
+
+<p>
+  <a href="{{ '/files/expository/Notes_on_Erdos_Problem_143_GCD_Graphs_LYM_Flows_and_Multiscale_Packing.pdf' | relative_url }}">Notes on Erdos Problem 143: GCD Graphs, LYM Flows, and Multiscale Packing</a>.
+</p>
+
+<p>
+  <a href="{{ '/files/expository/Translated-Window_Statistics_for_Curves_over_Finite_Fields.pdf' | relative_url }}">Translated-Window Statistics for Curves over Finite Fields</a>.
+</p>
