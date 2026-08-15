@@ -22,7 +22,7 @@ title: Research
   <a href="https://github.com/hxypqr/phase_riesz_products_lonely_runner/blob/main/phase_riesz_products_lonely_runner.pdf">PDF</a>.
 </p>
 
-<h2>Expository</h2>
+<h2>Research Notes</h2>
 
 <p>
   <a href="{{ '/files/expository/Separating_Prime_Blocks_and_Phase-Resolved_Asymptotics_for_Harmonic_Subset_Sums.pdf' | relative_url }}">Separating Prime Blocks and Phase-Resolved Asymptotics for Harmonic Subset Sums</a>.
