@@ -5,7 +5,7 @@ title: Research
 
 <h1>Research</h1>
 
-<h2>Preprints</h2>
+<h2>Preprints and Publications</h2>
 
 <p>
   Improved Weyl bounds on short intervals (2026).
@@ -32,14 +32,16 @@ title: Research
   <a href="https://arxiv.org/abs/2607.28988">arXiv:2607.28988</a>.
 </p>
 
-<h2>Online Note</h2>
-
 <p>
-  Phase-randomised Riesz products and a further improvement towards the lonely runner conjecture (with Benjamin Bedert, 2026; both authors independently obtained the exponent 13/8, each with AI assistance; the proof presented in the note was developed primarily by AI).
+  Phase-randomised Riesz products and a further improvement towards the lonely runner conjecture (online note with Benjamin Bedert, 2026; both authors independently obtained the exponent 13/8, each with AI assistance; the proof presented in the note was developed primarily by AI).
   <a href="https://github.com/hxypqr/phase_riesz_products_lonely_runner/blob/main/phase_riesz_products_lonely_runner.pdf">PDF</a>.
 </p>
 
-<h2>Research Notes</h2>
+<h2>Exploratory Research Notes</h2>
+
+<p>
+  These notes record exploratory results and intermediate steps from ongoing investigations. Some observations may already be known, while others establish only one part of a broader argument rather than a complete proof.
+</p>
 
 <p>
   <a href="{{ '/files/expository/Separating_Prime_Blocks_and_Phase-Resolved_Asymptotics_for_Harmonic_Subset_Sums.pdf' | relative_url }}">Separating Prime Blocks and Phase-Resolved Asymptotics for Harmonic Subset Sums</a>.
