@@ -22,6 +22,7 @@
     {% endif %}
     {% include head-custom.html %}
     <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}?v={{ asset_version }}">
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ asset_version }}">
     <link rel="stylesheet" href="{{ '/assets/css/equations.css' | relative_url }}?v={{ asset_version }}">
     {% if page.homepage %}
       <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}?v={{ asset_version }}">
@@ -47,7 +48,13 @@
 
     <footer class="site-footer">
       <div class="wrapper">
-        <p>&copy; {{ site.title }}.</p>
+        <div class="site-footer__meta">
+          <p>&copy; {{ site.title }}.</p>
+          <div class="site-footer__details">
+            <a href="{{ '/sitemap/' | relative_url }}">Sitemap</a>
+            <time datetime="{{ site.time | date_to_xmlschema }}">Site last updated {{ site.time | date: "%Y-%m-%d" }}</time>
+          </div>
+        </div>
       </div>
     </footer>
     <script src="{{ "/assets/js/main.js" | relative_url }}?v={{ asset_version }}"></script>

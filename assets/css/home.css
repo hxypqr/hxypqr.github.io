@@ -15,16 +15,13 @@
 }
 
 .profile-portrait {
-  aspect-ratio: 1;
   border: 1px solid #d8e0dc;
-  border-radius: 50%;
+  border-radius: 0;
   box-shadow: 0 0.8rem 2rem rgba(25, 53, 45, 0.12);
   box-sizing: border-box;
   display: block;
   height: auto;
-  object-fit: cover;
-  object-position: 50% 35%;
-  width: min(10.75rem, 100%);
+  width: 100%;
 }
 
 .academic-sidebar h1 {
@@ -110,16 +107,6 @@
 
 .section-intro {
   color: #626b67;
-}
-
-.research-interests {
-  margin: 1rem 0 0;
-  padding-left: 1.45rem;
-}
-
-.research-interests li {
-  margin-bottom: 0.4rem;
-  padding-left: 0.25rem;
 }
 
 .profile-source {

@@ -57,16 +57,10 @@ social_image: "/assets/img/homepage-social-card.png"
 
     <section id="research-interests" aria-labelledby="interests-heading">
       <h2 id="interests-heading">Research Interests</h2>
-      <p class="section-intro">The following are my favorite problems at the moment, listed in order:</p>
-      <ol class="research-interests">
-        <li>Sarnak's Möbius disjointness conjecture.</li>
-        <li>The Kakeya conjecture in $\mathbb{R}^n$.</li>
-        <li>Mean-value properties for $k$-Hessian and $k$-curvature equations.</li>
-        <li>Inverse spectral problems in $\mathbb{R}^2$.</li>
-        <li>Whether $\{n^2+1:n\in\mathbb{N}^{\ast}\}$ contains infinitely many primes.</li>
-        <li>The Lonely Runner Conjecture.</li>
-        <li>Renormalization techniques in dynamical systems.</li>
-      </ol>
+      <p class="section-intro">
+        Broadly, I am interested in harmonic analysis, analytic number theory,
+        and dynamical systems.
+      </p>
       <p class="profile-source">
         Earlier questions and discussions are available on my
         <a href="https://mathoverflow.net/users/91939/hu-xiyu">MathOverflow profile</a>.
@@ -97,12 +91,12 @@ social_image: "/assets/img/homepage-social-card.png"
       <h2 id="teaching-heading">Teaching</h2>
       <ul class="teaching-list">
         <li>
-          <strong>Teaching Assistant, Differential Equations II</strong>
-          <span>Undergraduate course in partial differential equations, USTC, Spring 2017.</span>
+          <strong>Teaching Assistant, Equations of Mathematical Physics</strong>
+          <span>Undergraduate course, USTC, Spring 2017.</span>
         </li>
         <li>
-          <strong>Teaching Assistant, Ordinary Differential Equations</strong>
-          <span>Undergraduate course, USTC.</span>
+          <strong>Teaching Assistant, <a href="https://www.zhangjy9610.me/PDE2.html">Differential Equations II</a></strong>
+          <span>Undergraduate course in partial differential equations, USTC, Spring 2017.</span>
         </li>
       </ul>
     </section>
@@ -112,9 +106,21 @@ social_image: "/assets/img/homepage-social-card.png"
       <ol class="publication-list">
         <li>
           <p class="publication-title">
-            <a href="https://arxiv.org/abs/2607.28988">Sharp Hausdorff Bounds for the Interior Singular Set of Convex <em>k</em>-Hessian Solutions</a>
+            <a href="https://arxiv.org/abs/2609.02478">Improved Weyl bounds on short intervals</a>
           </p>
-          <p class="publication-meta"><strong>Xiyu Hu</strong> · arXiv:2607.28988 · 2026</p>
+          <p class="publication-meta"><strong>Xiyu Hu</strong> · arXiv:2609.02478 · 2026</p>
+        </li>
+        <li>
+          <p class="publication-title">
+            <a href="https://arxiv.org/abs/2608.18956">Complexity-sensitive additive energy and off-diagonal Young inequalities on bounded-degree algebraic varieties</a>
+          </p>
+          <p class="publication-meta"><strong>Xiyu Hu</strong> · arXiv:2608.18956 · 2026</p>
+        </li>
+        <li>
+          <p class="publication-title">
+            <a href="https://arxiv.org/abs/2608.18818">Lonely Runners over Function Fields: Quantized Phase--Riesz product</a>
+          </p>
+          <p class="publication-meta"><strong>Xiyu Hu</strong> · arXiv:2608.18818 · 2026</p>
         </li>
         <li>
           <p class="publication-title">
@@ -124,10 +130,9 @@ social_image: "/assets/img/homepage-social-card.png"
         </li>
         <li>
           <p class="publication-title">
-            <a href="https://github.com/hxypqr/phase_riesz_products_lonely_runner/blob/main/phase_riesz_products_lonely_runner.pdf">Phase-randomised Riesz products and a further improvement towards the lonely runner conjecture</a>
+            <a href="https://arxiv.org/abs/2607.28988">Sharp Hausdorff Bounds for the Interior Singular Set of Convex <em>k</em>-Hessian Solutions</a>
           </p>
-          <p class="publication-meta">Benjamin Bedert and <strong>Xiyu Hu</strong> · Online joint note · 2026</p>
-          <p class="publication-note">Both authors independently obtained the exponent 13/8, each with AI assistance; the proof presented in the note was developed primarily by AI.</p>
+          <p class="publication-meta"><strong>Xiyu Hu</strong> · arXiv:2607.28988 · 2026</p>
         </li>
       </ol>
       <p class="research-notes-link"><a href="{{ '/research/' | relative_url }}">Research notes and further work <span aria-hidden="true">→</span></a></p>

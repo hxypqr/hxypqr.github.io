@@ -5,11 +5,21 @@ title: Research
 
 <h1>Research</h1>
 
-<h2>Research Papers</h2>
+<h2>Preprints</h2>
 
 <p>
-  Sharp Hausdorff Bounds for the Interior Singular Set of Convex <em>k</em>-Hessian Solutions (2026).
-  <a href="https://arxiv.org/abs/2607.28988">arXiv:2607.28988</a>.
+  Improved Weyl bounds on short intervals (2026).
+  <a href="https://arxiv.org/abs/2609.02478">arXiv:2609.02478</a>.
+</p>
+
+<p>
+  Complexity-sensitive additive energy and off-diagonal Young inequalities on bounded-degree algebraic varieties (2026).
+  <a href="https://arxiv.org/abs/2608.18956">arXiv:2608.18956</a>.
+</p>
+
+<p>
+  Lonely Runners over Function Fields: Quantized Phase--Riesz product (2026).
+  <a href="https://arxiv.org/abs/2608.18818">arXiv:2608.18818</a>.
 </p>
 
 <p>
@@ -18,7 +28,14 @@ title: Research
 </p>
 
 <p>
-  Phase-randomised Riesz products and a further improvement towards the lonely runner conjecture (joint statement with Benjamin Bedert, 2026; both authors independently obtained the exponent 13/8, each with AI assistance; the proof presented in the statement was developed primarily by AI).
+  Sharp Hausdorff Bounds for the Interior Singular Set of Convex <em>k</em>-Hessian Solutions (2026).
+  <a href="https://arxiv.org/abs/2607.28988">arXiv:2607.28988</a>.
+</p>
+
+<h2>Online Note</h2>
+
+<p>
+  Phase-randomised Riesz products and a further improvement towards the lonely runner conjecture (with Benjamin Bedert, 2026; both authors independently obtained the exponent 13/8, each with AI assistance; the proof presented in the note was developed primarily by AI).
   <a href="https://github.com/hxypqr/phase_riesz_products_lonely_runner/blob/main/phase_riesz_products_lonely_runner.pdf">PDF</a>.
 </p>
 

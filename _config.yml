@@ -2,12 +2,14 @@ title: Xiyu Hu
 description: Graduate student in mathematics at the University of Chinese Academy of Sciences.
 url: "https://hxypqr.github.io"
 baseurl: ""
+timezone: Asia/Shanghai
 
 theme: minima
 
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 markdown: kramdown
 kramdown:

@@ -1,0 +1,50 @@
+.site-footer__meta {
+  align-items: center;
+  color: #747d79;
+  display: flex;
+  font-size: 0.82rem;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.site-footer__meta p {
+  margin: 0;
+}
+
+.site-footer__details {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  justify-content: flex-end;
+}
+
+.site-footer__details a {
+  color: #276d61;
+  text-underline-offset: 0.16em;
+}
+
+.sitemap-page {
+  margin: 2.5rem 0 4rem;
+  max-width: 42rem;
+}
+
+.sitemap-page__intro {
+  color: #626b67;
+}
+
+.sitemap-page ul {
+  line-height: 1.8;
+}
+
+@media screen and (max-width: 600px) {
+  .site-footer__meta,
+  .site-footer__details {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-footer__details {
+    gap: 0.3rem;
+  }
+}
