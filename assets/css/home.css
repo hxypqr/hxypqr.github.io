@@ -1,0 +1,116 @@
+.home-profile {
+  align-items: center;
+  display: grid;
+  gap: clamp(1.75rem, 5vw, 3.75rem);
+  grid-template-columns: minmax(10rem, 12rem) minmax(0, 1fr);
+  margin: clamp(2.5rem, 8vw, 5.5rem) auto;
+  max-width: 46rem;
+}
+
+.home-profile__portrait-frame {
+  aspect-ratio: 1;
+  background: linear-gradient(145deg, #e8f0ed, #f4ede5);
+  border-radius: 50%;
+  box-shadow: 0 1.25rem 2.75rem rgba(30, 48, 43, 0.16);
+  padding: 0.35rem;
+  position: relative;
+}
+
+.home-profile__portrait-frame::after {
+  border: 1px solid rgba(22, 92, 77, 0.26);
+  border-radius: inherit;
+  content: "";
+  inset: -0.55rem;
+  pointer-events: none;
+  position: absolute;
+}
+
+.home-profile__portrait {
+  aspect-ratio: 1;
+  border: 0.25rem solid #fff;
+  border-radius: 50%;
+  box-sizing: border-box;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  object-position: 50% 35%;
+  width: 100%;
+}
+
+.home-profile__content {
+  min-width: 0;
+}
+
+.home-profile__eyebrow {
+  color: #397264;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0 0 0.55rem;
+  text-transform: uppercase;
+}
+
+.home-profile h1 {
+  font-family: Georgia, "Noto Serif SC", "Songti SC", serif;
+  font-size: clamp(2.25rem, 7vw, 3.45rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.home-profile__intro {
+  color: #4f5753;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  margin: 1.15rem 0 0;
+}
+
+.home-profile__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.home-profile__links a {
+  align-items: center;
+  border: 1px solid #9eb7b0;
+  border-radius: 999px;
+  color: #165c4d;
+  display: inline-flex;
+  font-weight: 600;
+  gap: 0.55rem;
+  padding: 0.55rem 0.95rem;
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.home-profile__links a:hover,
+.home-profile__links a:focus-visible {
+  background: #165c4d;
+  border-color: #165c4d;
+  color: #fff;
+}
+
+@media screen and (max-width: 600px) {
+  .home-profile {
+    grid-template-columns: 1fr;
+    margin-top: 2.25rem;
+    text-align: center;
+  }
+
+  .home-profile__portrait-frame {
+    justify-self: center;
+    width: min(9.5rem, 54vw);
+  }
+
+  .home-profile__links {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-profile__links a {
+    transition: none;
+  }
+}

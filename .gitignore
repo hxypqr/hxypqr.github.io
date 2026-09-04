@@ -1,3 +1,19 @@
 _site/
 .jekyll-cache/
 .sass-cache/
+
+# Keep local configuration, credentials, databases, and backups out of the
+# public GitHub Pages repository.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+wp-config.php
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+backups/
+archives/
+*.log
