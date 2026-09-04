@@ -33,7 +33,7 @@ social_image: "/assets/img/homepage-social-card.png"
         </div>
         <div>
           <dt>Email</dt>
-          <dd><a href="mailto:hxypqr@gmail.com">hxypqr@gmail.com</a></dd>
+          <dd>hxypqr [at] gmail [dot] com</dd>
         </div>
       </dl>
       <p class="home-profile__links">
