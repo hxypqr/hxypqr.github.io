@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="{% if page.homepage %}en{% else %}zh-CN{% endif %}">
   <head>
     {% assign asset_version = site.time | date: "%s" %}
     <meta charset="UTF-8">
@@ -27,14 +27,14 @@
       <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}?v={{ asset_version }}">
     {% endif %}
   </head>
-  <body>
+  <body{% if page.homepage %} class="homepage"{% endif %}>
     <header class="site-header">
       <div class="wrapper">
         <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title }}</a>
         <nav class="site-nav" aria-label="Primary navigation">
-          <a class="page-link" href="{{ "/blog/" | relative_url }}">Blog</a>
-          <a class="page-link" href="{{ "/research/" | relative_url }}">Research</a>
-          <a class="page-link" href="{{ "/" | relative_url }}">Homepage</a>
+          <a class="page-link" href="{{ "/" | relative_url }}"{% if page.url == "/" %} aria-current="page"{% endif %}>Home</a>
+          <a class="page-link" href="{{ "/research/" | relative_url }}"{% if page.url == "/research/" %} aria-current="page"{% endif %}>Research</a>
+          <a class="page-link" href="{{ "/blog/" | relative_url }}"{% if page.url == "/blog/" %} aria-current="page"{% endif %}>Blog</a>
         </nav>
       </div>
     </header>
